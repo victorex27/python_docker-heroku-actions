@@ -35,5 +35,5 @@ jobs:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}} # your heroku api key
             heroku_app_name: ${{secrets.HEROKU_APP_NAME}} # you aplication name
             dockerfile_directory: './' # set the path to the folder where the Dockerfile is located
-            docker_options: "--no-cache -e PORT=${{secrets.PORT}} -e OTHERS=${{secrets.OTHERS}}"
+            docker_options: "--no-cache --build-arg PORT=${{secrets.PORT}} --build-arg OTHERS=${{secrets.OTHERS}}"
             process_type: 'web' # Specify the process type you want to build and release

@@ -23,9 +23,15 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install -r requirements.txt
 
 FROM base AS runtime
 
+ARG PORT=3000
+ARG OTHERS="others"
+
 # Copy virtual env from python-deps stage
 COPY --from=python-deps /.venv /.venv
 ENV PATH="/.venv/bin:$PATH"
+ENV PORT=${PORT}
+ENV OTHERS=${OTHERS}
+
 
 
 # Create and switch to a new user
@@ -35,6 +41,8 @@ USER appuser
 
 # Install application into container
 COPY . .
+
+
 
 # Run the application
 # ENTRYPOINT ["python -m flask run app"]
