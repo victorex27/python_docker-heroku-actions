@@ -13,3 +13,6 @@ python -m requirements_txt i
 
 
 pip install <pacckage_name>
+
+docker build -t app .
+docker run -d -p 5000:5000 --env-file .env --name test_docker app
