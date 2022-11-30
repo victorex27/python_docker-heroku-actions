@@ -30,11 +30,11 @@ jobs:
             # host: ${{secrets.SSH_HOST}} #IP address of server to SSH into
             # username: ${{secrets.SSH_USERNAME}}
             # key: ${{secrets.SSH_KEY}} # Private or public key of the server
-            email: ${{ env.HEROKU_EMAIL }} # your heroku email
-            api_key: ${{ env.HEROKU_API_KEY }} # your heroku api key
-            app_name: ${{ env.HEROKU_APP_NAME }} # you aplication name
+            email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
+            api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
+            app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
             dockerfile_path: '.' # set the path to the folder where the Dockerfile is located
             process_type: 'web' # Specify the process type you want to build and release
             secrets: |
-              "PORT"=${{env.PORT}}
-              "OTHERS"=${{env.OTHERS}}
+              "PORT"=${{secrets.PORT}}
+              "OTHERS"=${{secrets.OTHERS}}
