@@ -24,15 +24,6 @@ jobs:
         # uses: appleboy/ssh-action@master
         uses: actions/checkout@v2
 
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: g2idocker/auth:latest
-          secrets: |
-            "PORT"=${{secrets.PORT}}
-            "OTHERS"=${{secrets.OTHERS}}
 
       - name: Build, Push and Release a Docker Container to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
@@ -44,4 +35,5 @@ jobs:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}} # your heroku api key
             heroku_app_name: ${{secrets.HEROKU_APP_NAME}} # you aplication name
             dockerfile_directory: './' # set the path to the folder where the Dockerfile is located
+            docker_options: "--no-cache -e PORT=${{secrets.PORT}} -e OTHERS=${{secrets.OTHERS}}"
             process_type: 'web' # Specify the process type you want to build and release
