@@ -23,7 +23,7 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install -r requirements.txt
 
 FROM base AS runtime
 
-ARG PORT=3000
+ARG PORT="3000"
 ARG OTHERS="others"
 
 # Copy virtual env from python-deps stage
